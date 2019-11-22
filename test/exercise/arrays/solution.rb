@@ -6,12 +6,12 @@ module Exercise
         max_value = array[index_arr]
         a = array.length - 1
         while index_arr < a
-          max_value = array[index_arr + 1] if array[index_arr] < array[index_arr + 1] && array[index_arr + 1] > max_value
+          max_value = array[index_arr + 1] if array[index_arr + 1] > max_value
           index_arr += 1
         end
         index_arr = 0
         while index_arr < array.length
-          array[index_arr] = max_value if (array[index_arr]).positive?
+          array[index_arr] = max_value if array[index_arr].positive?
           index_arr += 1
         end
         array
