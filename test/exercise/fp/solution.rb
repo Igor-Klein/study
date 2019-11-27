@@ -18,17 +18,10 @@ module Exercise
 
       def chars_count(films, threshold)
         new_arr_select = films.select do |film|
-          film['name'].to_s.include?('и') && film['rating_kinopoisk'].to_f >= threshold
+          film['name'].to_s.include?('и') && film['rating_kinopoisk'].to_f >= threshold && !film['rating_kinopoisk'].nil?
         end
-        array_of_strings = new_arr_select.map { |film| film['name'].to_s }
-
-        def count_string(str)
-          new_arr = str.to_s.chars
-          new_arr_chars = new_arr.select { |item| item == 'и' }
-          new_arr_chars.length.to_i
-        end
-        array_of_number_of_characters = array_of_strings.map { |arr1| count_string(arr1) }
-        array_of_number_of_characters.reduce(:+)
+        array_count_in_string = new_arr_select.map { |film| film['name'].count('и') }
+        array_count_in_string.reduce(:+)
       end
     end
   end
